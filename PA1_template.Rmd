@@ -121,13 +121,12 @@ activityInter$days <- ifelse(weekdays(activityInter$date) %in%
 Make a panel plot containing a time series plot type="l") of the 5-minute
 interval (x-axis) and the average number of steps taken, averaged across all weekday days 
 or weekend days (y-axis).
-```{r,fig.height=4, fig.width=6}
-library(ggplot2)
+```{r,fig.height=10, fig.width=8}
 weekdayStepsPerInt <- aggregate(steps~interval, activityInter[
   activityInter$days == "weekday",], mean)
 weekendStepsPerInt <- aggregate(steps~interval, activityInter[
   activityInter$days == "weekend",], mean)
-par(mfrow=c(1,2))
+par(mfrow=c(2,1))
 with(weekdayStepsPerInt,plot(interval,steps,type="l",
                              main="Weekdays, steps per interval"))
 with(weekendStepsPerInt,plot(interval,steps,type="l",
